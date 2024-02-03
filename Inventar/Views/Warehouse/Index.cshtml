@@ -1,0 +1,41 @@
+﻿@model IEnumerable<Inventar.Data.Warehouse>
+
+@{
+    ViewData["Title"] = "Lista e Magazinave";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-controller="Warehouse" asp-action="Create">Krijo</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Emri
+            </th>
+            <th>
+                Pershkrimi
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var magazine in Model)
+        {
+            <tr>
+                <td>
+                    @magazine.Name
+                </td>
+                <td>
+                    @magazine.Description
+                </td>
+                <td>
+                    <a asp-controller="Warehouse" asp-action="Edit" asp-route-id="@magazine.Id">Edit</a> |
+                    <a asp-controller="Warehouse" asp-action="Delete" asp-route-id="@magazine.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

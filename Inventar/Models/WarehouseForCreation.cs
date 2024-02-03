@@ -1,6 +1,6 @@
-﻿namespace Inventar.Data
+﻿namespace Inventar.Models
 {
-    public class Warehouse
+    public class WarehouseForCreation
     {
         public int Id { get; set; }
         public string Name { get; set; }
