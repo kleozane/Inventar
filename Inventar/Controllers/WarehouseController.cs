@@ -47,22 +47,32 @@ namespace Inventar.Controllers
         // GET: WarehouseController/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            return View();
+            var warehouse = await _context.Warehouses.Where(w => w.Id == id).FirstOrDefaultAsync();
+            var model = new WarehouseForModification();
+
+            model.Id = warehouse.Id;
+            model.Name = warehouse.Name;
+            model.Description = warehouse.Description;
+
+            return View(model);
         }
 
         // POST: WarehouseController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(WarehouseForModification model)
         {
-            try
+            var warehouse = new Warehouse
             {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+                Id = model.Id,
+                Name = model.Name,
+                Description = model.Description
+            };
+
+            _context.Warehouses.Update(warehouse);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Delete(int id)

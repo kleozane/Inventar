@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-builder.Services.AddDbContext<InventarContext>(options => options.UseSqlServer("Server=LAPTOP-RDPL0MJR\\SQLEXPRESS;Database=inventar;Trusted_Connection=True;TrustServerCertificate=true;"));
+builder.Services.AddDbContext<InventarContext>(options => options.UseSqlServer("Server=DESKTOP-E3IVCBJ\\SQLEXPRESS;Database=inventar;Trusted_Connection=True;TrustServerCertificate=true;"));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

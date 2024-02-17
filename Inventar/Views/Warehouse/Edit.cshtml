@@ -1,0 +1,45 @@
+﻿@model Inventar.Models.WarehouseForModification
+
+@{
+    ViewData["Title"] = "Ndrysho";
+}
+
+<h1>Ndrysho</h1>
+
+<h4>Magazina @Model.Name</h4>
+<hr />
+<form asp-action="Edit">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-12">
+            <div class="col-md-5" style="float:left">
+                <div class="form-group">
+                    <label class="control-label">Emri</label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-5" style="float:right">
+                <div class="form-group">
+                    <label class="control-label">Pershkrimi</label>
+                    <input asp-for="Description" class="form-control" />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        <button class="btn btn-primary"> Ruaj </button>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Kthehu Mbrapa</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
